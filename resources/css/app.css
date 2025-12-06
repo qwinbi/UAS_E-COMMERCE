@@ -1,0 +1,100 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom Styles */
+:root {
+    --rum-punch: #822621;
+    --desert-clay: #af6451;
+    --olive: #abba99;
+    --forest-green: #162c11;
+    --cream: #f7edd4;
+}
+
+/* Custom Utilities */
+.bg-rum-punch { background-color: var(--rum-punch); }
+.text-rum-punch { color: var(--rum-punch); }
+.border-rum-punch { border-color: var(--rum-punch); }
+
+.bg-desert-clay { background-color: var(--desert-clay); }
+.text-desert-clay { color: var(--desert-clay); }
+.border-desert-clay { border-color: var(--desert-clay); }
+
+.bg-olive { background-color: var(--olive); }
+.text-olive { color: var(--olive); }
+.border-olive { border-color: var(--olive); }
+
+.bg-forest-green { background-color: var(--forest-green); }
+.text-forest-green { color: var(--forest-green); }
+.border-forest-green { border-color: var(--forest-green); }
+
+.bg-cream { background-color: var(--cream); }
+.text-cream { color: var(--cream); }
+.border-cream { border-color: var(--cream); }
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+.animate-bounce { animation: bounce 2s infinite; }
+.animate-pulse { animation: pulse 2s infinite; }
+.animate-wiggle { animation: wiggle 1s ease-in-out infinite; }
+
+/* Custom Components */
+.btn-primary {
+    @apply bg-rum-punch text-white px-4 py-2 rounded-lg hover:opacity-90 transition;
+}
+
+.btn-secondary {
+    @apply bg-desert-clay text-white px-4 py-2 rounded-lg hover:opacity-90 transition;
+}
+
+.btn-accent {
+    @apply bg-olive text-forest-green px-4 py-2 rounded-lg hover:opacity-90 transition;
+}
+
+.rounded-bunny {
+    @apply rounded-2xl;
+}
+
+.card-hover {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--desert-clay);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rum-punch);
+}
