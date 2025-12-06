@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/cart/update/{cartItem}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/remove/{cartItem}', [CartController::class, 'destroy'])->name('cart.destroy');
     
-    // Checkout routes (harus di CartController atau buat CheckoutController terpisah)
+    // Checkout routes
     Route::get('/checkout', [CartController::class, 'checkoutForm'])->name('checkout.form');
     Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout.process');
     
@@ -53,8 +53,8 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     
-    // Products
-    Route::resource('products', AdminProductController::class)->except(['show']);
+    // Products - Pastikan menggunakan resource dengan semua method
+    Route::resource('products', AdminProductController::class);
     
     // Orders
     Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
