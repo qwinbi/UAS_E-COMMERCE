@@ -7,15 +7,20 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 // Home routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/products', [HomeController::class, 'products'])->name('products.index');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact.submit');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/categories', [HomeController::class, 'categories'])->name('categories');
 
 // Product routes
+Route::get('/products', [HomeController::class, 'products'])->name('products.index');
 Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('products.show');
 
 // Auth routes
@@ -35,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/cart/update/{cartItem}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/remove/{cartItem}', [CartController::class, 'destroy'])->name('cart.destroy');
     
-    // Checkout routes
+    // Checkout routes (harus di CartController atau buat CheckoutController terpisah)
     Route::get('/checkout', [CartController::class, 'checkoutForm'])->name('checkout.form');
     Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout.process');
     
